@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Waaree Solar Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional, animated, and responsive solar energy company website built with React.js and Framer Motion.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Animated Hero section with solar system visualization
+- Preloader with solar icon animation
+- Fully responsive design (mobile, tablet, desktop)
+- Smooth scroll navigation
+- Interactive components with Framer Motion animations
+- Contact form with validation
+- Projects gallery with filters
+- Team section
+- Testimonials carousel
+- Professional footer with social links
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js 19
+- Framer Motion 12
+- Material UI Icons
+- CSS Custom Properties
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+```
 
-### `npm run build`
+### Development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run build
+```
 
-### `npm run eject`
+## Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+solar-website/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── Services.jsx
+│   │   ├── Projects.jsx
+│   │   ├── Team.jsx
+│   │   ├── Testimonials.jsx
+│   │   ├── Contact.jsx
+│   │   ├── Footer.jsx
+│   │   └── Preloader.jsx
+│   ├── App.js
+│   ├── index.js
+│   └── index.css
+├── build/
+└── package.json
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Color Scheme
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Primary: #f9a825 (Gold)
+- Secondary: #ff8f00 (Orange)
+- Dark Background: #0a0a1a
+- Light Text: #ffffff
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Sections
 
-## Learn More
+1. **Navbar** - Fixed navigation with logo, menu links, and CTA button
+2. **Hero** - Animated hero with solar system visualization and stats
+3. **About** - Company history and features
+4. **Services** - Service cards with hover effects
+5. **Projects** - Filterable project gallery
+6. **Team** - Team members with social links
+7. **Testimonials** - Customer testimonials
+8. **Contact** - Contact form and company info
+9. **Footer** - Quick links and social media
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Build the project and deploy the `build` folder to any static hosting service.
 
-### Code Splitting
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+All Rights Reserved.

@@ -1,15 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import SolarPanelIcon from '@mui/icons-material/SolarPanel';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import FactoryIcon from '@mui/icons-material/Factory';
-import OpacityIcon from '@mui/icons-material/Opacity';
 import BatteryChargingFullIcon from '@mui/icons-material/BatteryChargingFull';
 import BuildIcon from '@mui/icons-material/Build';
 
 const services = [
   {
-    icon: <SolarPanelIcon />,
+    icon: <WbSunnyIcon />,
     title: 'Utility Scale Solar',
     description: 'Large-scale solar power plants for utilities and independent power producers. From 1MW to 1000+ MW installations.',
     features: ['Ground Mount Systems', 'Tracking Systems', 'Hybrid Solutions', 'Grid Connectivity'],
@@ -51,7 +50,7 @@ const Services = () => {
     <section
       id="services"
       style={{
-        background: 'linear-gradient(180deg, #121225 0%, #0a0a1a 100%)',
+        background: 'linear-gradient(180deg, #0a0a1a 0%, #121225 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -105,57 +104,102 @@ const Services = () => {
           </motion.p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 * index }}
-              whileHover={{ y: -10 }}
+              transition={{ delay: 0.1 * index, duration: 0.8 }}
+              whileHover={{ y: -15, scale: 1.02 }}
               style={{
-                padding: '40px',
-                background: 'rgba(26, 26, 58, 0.5)',
-                borderRadius: '20px',
-                border: '1px solid rgba(249, 168, 37, 0.1)',
-                transition: 'all 0.3s ease',
+                padding: '32px',
+                background: 'rgba(26, 26, 58, 0.3)',
+                borderRadius: '24px',
+                border: '1px solid rgba(249, 168, 37, 0.15)',
+                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 cursor: 'pointer',
+                position: 'relative',
+                overflow: 'hidden',
+                backdropFilter: 'blur(10px)'
               }}
             >
+              {/* Glowing border effect */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                borderRadius: '24px',
+                padding: '2px',
+                background: 'linear-gradient(45deg, transparent, rgba(249, 168, 37, 0.6), transparent)',
+                pointerEvents: 'none',
+                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskClip: 'text',
+                opacity: 0,
+                transition: 'opacity 0.4s ease'
+              }}></div>
+
               <motion.div
                 style={{
-                  width: '70px',
-                  height: '70px',
-                  borderRadius: '20px',
-                  background: 'linear-gradient(135deg, rgba(249, 168, 37, 0.2) 0%, rgba(255, 143, 0, 0.1) 100%)',
+                  width: '80px',
+                  height: '80px',
+                  borderRadius: '24px',
+                  background: 'linear-gradient(135deg, rgba(249, 168, 37, 0.15) 0%, rgba(255, 143, 0, 0.08) 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '25px',
+                  marginBottom: '24px',
                   color: '#f9a825',
-                  fontSize: '2rem',
+                  fontSize: '2.2rem',
+                  transition: 'all 0.4s ease',
+                  boxShadow: '0 8px 32px rgba(249, 168, 37, 0.2)'
                 }}
-                whileHover={{ scale: 1.1, background: 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)' }}
-                transition={{ duration: 0.3 }}
+                whileHover={{
+                  scale: 1.1,
+                  background: 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)',
+                  boxShadow: '0 12px 40px rgba(249, 168, 37, 0.4)'
+                }}
+                transition={{ duration: 0.4 }}
               >
                 {service.icon}
               </motion.div>
 
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '15px' }}>{service.title}</h3>
-              <p style={{ color: '#b0b0b0', marginBottom: '25px', lineHeight: 1.7 }}>{service.description}</p>
+              <h3 style={{
+                fontSize: '1.7rem',
+                fontWeight: 800,
+                marginBottom: '16px',
+                letterSpacing: '-0.5px',
+                background: 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}>
+                {service.title}
+              </h3>
+              <p style={{
+                color: '#e0e0e0',
+                marginBottom: '24px',
+                lineHeight: 1.8,
+                fontSize: '1rem'
+              }}>
+                {service.description}
+              </p>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '24px' }}>
                 {service.features.map((feature) => (
                   <span
                     key={feature}
                     style={{
-                      padding: '8px 16px',
-                      background: 'rgba(249, 168, 37, 0.1)',
-                      borderRadius: '20px',
-                      fontSize: '0.85rem',
+                      padding: '10px 18px',
+                      background: 'rgba(249, 168, 37, 0.12)',
+                      borderRadius: '24px',
+                      fontSize: '0.9rem',
                       color: '#f9a825',
-                      border: '1px solid rgba(249, 168, 37, 0.2)',
+                      border: '1px solid rgba(249, 168, 37, 0.25)',
+                      fontWeight: 500,
+                      transition: 'all 0.3s ease'
                     }}
                   >
                     {feature}
@@ -165,14 +209,24 @@ const Services = () => {
 
               <motion.a
                 href="#contact"
-                whileHover={{ color: '#f9a825' }}
+                whileHover={{
+                  color: '#fff',
+                  background: 'rgba(249, 168, 37, 0.2)'
+                }}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  marginTop: '25px',
+                  marginTop: '16px',
                   color: '#fff',
                   fontWeight: 600,
+                  fontSize: '0.95rem',
                   cursor: 'pointer',
+                  padding: '12px 24px',
+                  background: 'rgba(249, 168, 37, 0.1)',
+                  borderRadius: '50px',
+                  border: '1px solid rgba(249, 168, 37, 0.2)',
+                  transition: 'all 0.3s ease',
+                  letterSpacing: '0.5px'
                 }}
               >
                 Get Quote →
@@ -183,15 +237,35 @@ const Services = () => {
 
         {/* Process Steps */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ marginTop: '100px' }}
+          style={{ marginTop: '120px' }}
         >
-          <h3 style={{ textAlign: 'center', fontSize: '2rem', fontWeight: 700, marginBottom: '60px' }}>
-            How It <span style={{ color: '#f9a825' }}>Works</span>
+          <h3 style={{
+            textAlign: 'center',
+            fontSize: '2.2rem',
+            fontWeight: 800,
+            marginBottom: '50px',
+            background: 'linear-gradient(135deg, #fff 0%, #e0e0e0 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            display: 'inline-block',
+            padding: '0 15px',
+            borderRadius: '10px'
+          }}>
+            How It <span style={{
+              background: 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>Works</span>
           </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', position: 'relative' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '24px',
+            position: 'relative'
+          }}>
             {[
               { step: '01', title: 'Site Survey', description: 'We analyze your property and energy requirements' },
               { step: '02', title: 'System Design', description: 'Custom solar solution designed for maximum efficiency' },
@@ -200,37 +274,78 @@ const Services = () => {
             ].map((item, index) => (
               <motion.div
                 key={item.step}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1 * index }}
-                style={{ textAlign: 'center', position: 'relative' }}
+                transition={{ delay: 0.1 * index, duration: 0.8 }}
+                style={{
+                  textAlign: 'center',
+                  position: 'relative',
+                  background: 'rgba(26, 26, 58, 0.2)',
+                  borderRadius: '24px',
+                  padding: '28px',
+                  border: '1px solid rgba(249, 168, 37, 0.15)',
+                  transition: 'all 0.4s ease',
+                  backdropFilter: 'blur(10px)'
+                }}
               >
+                {/* Step number with enhanced styling */}
                 <div style={{
-                  width: '80px',
-                  height: '80px',
+                  width: '72px',
+                  height: '72px',
                   borderRadius: '50%',
                   background: 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: '0 auto 20px',
-                  fontSize: '1.5rem',
+                  margin: '0 auto 24px',
+                  fontSize: '1.8rem',
                   fontWeight: 800,
                   color: '#0a0a1a',
+                  boxShadow: '0 8px 25px rgba(249, 168, 37, 0.3)',
+                  transition: 'all 0.4s ease',
+                  position: 'relative'
                 }}>
                   {item.step}
+                  {/* Animated glow effect */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '-8px',
+                    left: '-8px',
+                    right: '-8px',
+                    bottom: '-8px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(60deg, rgba(249, 168, 37, 0.4), rgba(255, 143, 0, 0.3))',
+                    opacity: 0,
+                    transition: 'opacity 0.4s ease'
+                  }}></div>
                 </div>
-                <h4 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '10px' }}>{item.title}</h4>
-                <p style={{ fontSize: '0.9rem', color: '#b0b0b0' }}>{item.description}</p>
+
+                <h4 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 700,
+                  marginBottom: '12px',
+                  color: '#fff',
+                  letterSpacing: '-0.3px'
+                }}>
+                  {item.title}
+                </h4>
+                <p style={{
+                  fontSize: '1rem',
+                  color: '#e0e0e0',
+                  lineHeight: 1.7
+                }}>
+                  {item.description}
+                </p>
                 {index < 3 && (
                   <div style={{
                     position: 'absolute',
-                    top: '40px',
-                    right: '-10px',
-                    width: '20px',
+                    top: '48px',
+                    right: '-12px',
+                    width: '24px',
                     height: '2px',
-                    background: 'rgba(249, 168, 37, 0.3)',
+                    background: 'linear-gradient(90deg, transparent, #f9a825, transparent)',
+                    animation: 'flow 2s linear infinite'
                   }} />
                 )}
               </motion.div>
@@ -270,23 +385,35 @@ const Services = () => {
       </div>
 
       <style>{`
-        @media (max-width: 1024px) {
-          .container > div:nth-child(3) {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .container > div:nth-child(5) {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 768px) {
-          .container > div:nth-child(3) {
-            grid-template-columns: 1fr !important;
-          }
-          .container > div:nth-child(5) {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+         @media (max-width: 1024px) {
+           .container > div:nth-child(3) {
+             grid-template-columns: repeat(2, 1fr) !important;
+           }
+           .container > div:nth-child(5) {
+             grid-template-columns: repeat(2, 1fr) !important;
+           }
+         }
+         @media (max-width: 768px) {
+           .container > div:nth-child(3) {
+             grid-template-columns: 1fr !important;
+           }
+           .container > div:nth-child(5) {
+             grid-template-columns: 1fr !important;
+           }
+         }
+         
+         @keyframes flow {
+           0% {
+             background-position: 0% 50%;
+           }
+           50% {
+             background-position: 100% 50%;
+           }
+           100% {
+             background-position: 0% 50%;
+           }
+         }
+       `}</style>
     </section>
   );
 };

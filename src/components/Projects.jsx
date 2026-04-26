@@ -5,6 +5,21 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 const projects = [
   {
     id: 1,
+    name: 'Kaustubh Solar Evolution',
+    location: 'Amravati, Maharashtra',
+    capacity: '3.5 kW',
+    type: 'Rooftop',
+    client: 'Mr. Prince Hirekhan',
+    technology: 'N-Type Topcon DCR Bifacial Panel',
+    inverter: 'String Inverter',
+    modules: '6 Nos. WAAREE',
+    cost: '₹1,83,600',
+    subsidy: '₹78,000',
+    warranty: '30 Years',
+    description: 'Rooftop Solar EPC Project with N-Type Topcon DCR Bifacial Panels',
+  },
+  {
+    id: 2,
     name: 'Jindal Renewables',
     location: 'Bikaner, Rajasthan',
     capacity: '2012 MW',
@@ -71,10 +86,9 @@ const projects = [
 
 const Projects = () => {
   const [filter, setFilter] = useState('All');
-  const [selectedProject, setSelectedProject] = useState(null);
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
+  const filteredProjects = filter === 'All'
+    ? projects
     : projects.filter(p => p.type === filter);
 
   const categories = ['All', 'Ground Mount', 'Floating', 'Rooftop', 'Utility'];
@@ -193,93 +207,153 @@ const Projects = () => {
 
         {/* Filter Tabs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           style={{
             display: 'flex',
-            gap: '15px',
+            gap: '12px',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            marginBottom: '50px',
+            marginBottom: '60px',
           }}
         >
           {categories.map((category) => (
             <motion.button
               key={category}
               onClick={() => setFilter(category)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.1, y: -3 }}
+              whileTap={{ scale: 0.9 }}
               style={{
-                padding: '12px 30px',
-                background: filter === category 
-                  ? 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)' 
-                  : 'rgba(249, 168, 37, 0.1)',
-                border: filter === category 
-                  ? 'none' 
-                  : '1px solid rgba(249, 168, 37, 0.3)',
-                borderRadius: '50px',
-                color: filter === category ? '#0a0a1a' : '#fff',
-                fontWeight: 600,
+                padding: '14px 32px',
+                background: filter === category
+                  ? 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)'
+                  : 'rgba(26, 26, 58, 0.3)',
+                border: filter === category
+                  ? 'none'
+                  : '1px solid rgba(249, 168, 37, 0.2)',
+                borderRadius: '55px',
+                color: filter === category ? '#0a0a1a' : '#e0e0e0',
+                fontWeight: 700,
+                fontSize: '0.95rem',
                 cursor: 'pointer',
-                transition: 'all 0.3s ease',
+                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                position: 'relative',
+                overflow: 'hidden',
+                backdropFilter: 'blur(5px)',
+                letterSpacing: '0.5px'
               }}
             >
               {category}
+              {/* Animated underline effect */}
+              <div style={{
+                position: 'absolute',
+                bottom: '-4px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '0',
+                height: '3px',
+                background: 'linear-gradient(90deg, transparent, #f9a825, transparent)',
+                transition: 'width 0.4s ease'
+              }}></div>
             </motion.button>
           ))}
         </motion.div>
 
         {/* Projects Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '25px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 * index }}
-              whileHover={{ y: -10 }}
-              onClick={() => setSelectedProject(project)}
+              transition={{ delay: 0.1 * index, duration: 0.8 }}
+              whileHover={{ y: -12, scale: 1.02 }}
               style={{
-                borderRadius: '20px',
+                borderRadius: '24px',
                 overflow: 'hidden',
-                background: '#1a1a3a',
-                border: '1px solid rgba(249, 168, 37, 0.1)',
+                background: 'rgba(26, 26, 58, 0.3)',
+                border: '1px solid rgba(249, 168, 37, 0.15)',
                 cursor: 'pointer',
-                transition: 'all 0.3s ease',
-              }}
-            >
-              {/* Project Image Placeholder */}
-              <div style={{
-                height: '200px',
-                background: 'linear-gradient(135deg, #1a1a3a 0%, #2a2a5a 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 position: 'relative',
                 overflow: 'hidden',
-              }}>
-                <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%', opacity: 0.3 }}>
+                backdropFilter: 'blur(10px)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+              }}
+            >
+              {/* Enhanced Project Image */}
+              <div style={{
+                height: '220px',
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: '20px',
+                background: 'linear-gradient(135deg, #1a1a3a 0%, #2a2a5a 100%)',
+                transition: 'all 0.4s ease',
+                transform: 'translateY(0px)'
+              }}
+                whileHover={{ scale: 1.02 }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0px)';
+                }}
+              >
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: `
+                     linear-gradient(rgba(249, 168, 37, 0.03) 1px, transparent 1px),
+                     linear-gradient(90deg, rgba(249, 168, 37, 0.03) 1px, transparent 1px)
+                   `,
+                  backgroundSize: '40px 40px',
+                  opacity: 0.3,
+                  animation: 'gridMove 20s linear infinite'
+                }}>
+                </div>
+                <svg viewBox="0 0 100 100" style={{
+                  width: '100%',
+                  height: '100%',
+                  opacity: 0.4,
+                  position: 'absolute',
+                  top: 0,
+                  left: 0
+                }}>
                   <rect width="100" height="100" fill="#121225" />
                   {[10, 30, 50, 70, 90].map((x) => (
-                    <line key={x} x1={x} y1="0" x2={x} y2="100" stroke="#f9a825" strokeWidth="1" opacity="0.3" />
+                    <line key={x} x1={x} y1="0" x2={x} y2="100" stroke="#f9a825" strokeWidth="1" opacity="0.2" />
                   ))}
                   {[10, 30, 50, 70, 90].map((y) => (
-                    <line key={y} x1="0" y1={y} x2="100" y2={y} stroke="#f9a825" strokeWidth="1" opacity="0.3" />
+                    <line key={y} x1="0" y1={y} x2="100" y2={y} stroke="#f9a825" strokeWidth="1" opacity="0.2" />
                   ))}
-                  <circle cx="50" cy="50" r="15" fill="none" stroke="#f9a825" strokeWidth="2" />
+                  <circle cx="50" cy="50" r="18" fill="none" stroke="url(#projectGradient)" strokeWidth="2">
+                    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="10s" repeatCount="indefinite" />
+                  </circle>
+                  <defs>
+                    <linearGradient id="projectGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#f9a825" />
+                      <stop offset="100%" stopColor="#ff8f00" />
+                    </linearGradient>
+                  </defs>
                 </svg>
                 <div style={{
                   position: 'absolute',
-                  top: '15px',
-                  right: '15px',
-                  padding: '8px 15px',
-                  background: 'rgba(249, 168, 37, 0.9)',
-                  borderRadius: '20px',
-                  fontSize: '0.8rem',
+                  top: '18px',
+                  right: '18px',
+                  padding: '10px 18px',
+                  background: 'linear-gradient(135deg, rgba(249, 168, 37, 0.2) 0%, rgba(255, 143, 0, 0.1) 100%)',
+                  borderRadius: '16px',
+                  fontSize: '0.85rem',
                   fontWeight: 600,
                   color: '#0a0a1a',
+                  boxShadow: '0 4px 12px rgba(249, 168, 37, 0.3)',
+                  border: '1px solid rgba(249, 168, 37, 0.2)',
+                  transition: 'all 0.3s ease'
                 }}>
                   {project.type}
                 </div>
@@ -289,29 +363,45 @@ const Projects = () => {
                 <h4 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '10px' }}>
                   {project.name}
                 </h4>
+                {project.client && (
+                  <p style={{ color: '#f9a825', fontSize: '0.9rem', marginBottom: '8px' }}>
+                    Client: {project.client}
+                  </p>
+                )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#b0b0b0' }}>
                   <LocationOnIcon style={{ fontSize: '1.2rem', color: '#f9a825' }} />
                   <span style={{ fontSize: '0.9rem' }}>{project.location}</span>
                 </div>
+                {project.description && (
+                  <p style={{ color: '#b0b0b0', fontSize: '0.85rem', marginTop: '10px' }}>
+                    {project.description}
+                  </p>
+                )}
                 <div style={{
                   marginTop: '15px',
                   paddingTop: '15px',
                   borderTop: '1px solid rgba(249, 168, 37, 0.2)',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '10px',
                 }}>
-                  <span style={{ color: '#b0b0b0', fontSize: '0.9rem' }}>Capacity</span>
-                  <span style={{
-                    fontSize: '1.4rem',
-                    fontWeight: 700,
-                    background: 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                  }}>
-                    {project.capacity}
-                  </span>
+                  <div>
+                    <span style={{ color: '#b0b0b0', fontSize: '0.8rem' }}>Capacity</span>
+                    <p style={{ fontSize: '1.1rem', fontWeight: 600 }}>{project.capacity}</p>
+                  </div>
+                  {project.cost && (
+                    <div>
+                      <span style={{ color: '#b0b0b0', fontSize: '0.8rem' }}>Cost</span>
+                      <p style={{ fontSize: '1.1rem', fontWeight: 600, color: '#f9a825' }}>{project.cost}</p>
+                    </div>
+                  )}
                 </div>
+                {project.warranty && (
+                  <div style={{ marginTop: '10px', padding: '8px 12px', background: 'rgba(249,168,37,0.1)', borderRadius: '8px' }}>
+                    <span style={{ color: '#b0b0b0', fontSize: '0.8rem' }}>Warranty: </span>
+                    <span style={{ color: '#f9a825', fontWeight: 600 }}>{project.warranty}</span>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
@@ -404,26 +494,62 @@ const Projects = () => {
       </div>
 
       <style>{`
-        @media (max-width: 1024px) {
-          .container > div:nth-child(4) {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .container > div:nth-child(6) > div:first-child {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 768px) {
-          .container > div:nth-child(4) {
-            grid-template-columns: 1fr !important;
-          }
-          .container > div:nth-child(5) {
-            grid-template-columns: 1fr !important;
-          }
-          .container > div:nth-child(6) > div:first-child {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+         @media (max-width: 1024px) {
+           .container > div:nth-child(4) {
+             grid-template-columns: repeat(2, 1fr) !important;
+           }
+           .container > div:nth-child(6) > div:first-child {
+             grid-template-columns: repeat(2, 1fr) !important;
+           }
+         }
+         @media (max-width: 768px) {
+           .container > div:nth-child(4) {
+             grid-template-columns: 1fr !important;
+           }
+           .container > div:nth-child(5) {
+             grid-template-columns: 1fr !important;
+           }
+           .container > div:nth-child(6) > div:first-child {
+             grid-template-columns: 1fr !important;
+           }
+         }
+         
+         @keyframes gridMove {
+           0% {
+             background-position: 0 0;
+           }
+           100% {
+             background-position: 40px 40px;
+           }
+         }
+         
+         @keyframes pulseGlow {
+           0%, 100% {
+             box-shadow: 0 0 0 rgba(249, 168, 37, 0.4);
+           }
+           50% {
+             box-shadow: 0 0 20px rgba(249, 168, 37, 0.6);
+           }
+         }
+         
+         @keyframes float {
+           0%, 100% {
+             transform: translateY(0px);
+           }
+           50% {
+             transform: translateY(-10px);
+           }
+         }
+         
+         @keyframes rotateSlow {
+           from {
+             transform: rotate(0deg);
+           }
+           to {
+             transform: rotate(360deg);
+           }
+         }
+       `}</style>
     </section>
   );
 };

@@ -18,15 +18,34 @@ const Contact = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error for this field when user types
+    if (formErrors[e.target.name]) {
+      setFormErrors(prev => ({ ...prev, [e.target.name]: '' }));
+    }
+  };
+
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.name.trim()) errors.name = 'Name is required';
+    if (!formData.email.trim()) errors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Email is invalid';
+    if (!formData.inquiryType) errors.inquiryType = 'Please select an inquiry type';
+    return errors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
+    const errors = validateForm();
+    if (Object.keys(errors).length === 0) {
+      console.log('Form submitted:', formData);
+      setSubmitted(true);
+    } else {
+      setFormErrors(errors);
+    }
   };
 
   return (
@@ -126,7 +145,7 @@ const Contact = () => {
                   <h4 style={{ fontWeight: 600, marginBottom: '5px' }}>Registered Office</h4>
                   <p style={{ color: '#b0b0b0', fontSize: '0.95rem' }}>
                     602, Western Edge - I, Off Western Express Highway,<br />
-                    Borivali (E), Mumbai, Maharashtra, India.<br />
+                    Nagpur, Maharashtra, India.<br />
                     Pin Code: 400066
                   </p>
                 </div>
@@ -158,7 +177,7 @@ const Contact = () => {
                 <div>
                   <h4 style={{ fontWeight: 600, marginBottom: '5px' }}>Toll Free</h4>
                   <p style={{ color: '#b0b0b0', fontSize: '0.95rem' }}>
-                    1800-2121-321<br />
+                    +91-9168031615<br />
                     Mon-Sat: 9AM to 6PM
                   </p>
                 </div>
@@ -190,7 +209,7 @@ const Contact = () => {
                 <div>
                   <h4 style={{ fontWeight: 600, marginBottom: '5px' }}>Email</h4>
                   <p style={{ color: '#b0b0b0', fontSize: '0.95rem' }}>
-                    info@waaree.com<br />
+                    kaustubhsolarevolution@gmail.com<br />
                     careers@waaree.com
                   </p>
                 </div>
@@ -289,8 +308,15 @@ const Contact = () => {
                         color: '#fff',
                         fontSize: '1rem',
                         outline: 'none',
+                        borderColor: formErrors.name ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                        boxShadow: formErrors.name ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                       }}
                     />
+                    {formErrors.name && (
+                      <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                        {formErrors.name}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#b0b0b0' }}>Email *</label>
@@ -309,8 +335,15 @@ const Contact = () => {
                         color: '#fff',
                         fontSize: '1rem',
                         outline: 'none',
+                        borderColor: formErrors.email ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                        boxShadow: formErrors.email ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                       }}
                     />
+                    {formErrors.email && (
+                      <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                        {formErrors.email}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -331,8 +364,15 @@ const Contact = () => {
                         color: '#fff',
                         fontSize: '1rem',
                         outline: 'none',
+                        borderColor: formErrors.phone ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                        boxShadow: formErrors.phone ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                       }}
                     />
+                    {formErrors.phone && (
+                      <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                        {formErrors.phone}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#b0b0b0' }}>Organization</label>
@@ -350,8 +390,15 @@ const Contact = () => {
                         color: '#fff',
                         fontSize: '1rem',
                         outline: 'none',
+                        borderColor: formErrors.organization ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                        boxShadow: formErrors.organization ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                       }}
                     />
+                    {formErrors.organization && (
+                      <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                        {formErrors.organization}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -372,8 +419,15 @@ const Contact = () => {
                         color: '#fff',
                         fontSize: '1rem',
                         outline: 'none',
+                        borderColor: formErrors.state ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                        boxShadow: formErrors.state ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                       }}
                     />
+                    {formErrors.state && (
+                      <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                        {formErrors.state}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#b0b0b0' }}>City</label>
@@ -391,8 +445,15 @@ const Contact = () => {
                         color: '#fff',
                         fontSize: '1rem',
                         outline: 'none',
+                        borderColor: formErrors.city ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                        boxShadow: formErrors.city ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                       }}
                     />
+                    {formErrors.city && (
+                      <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                        {formErrors.city}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#b0b0b0' }}>Pin Code</label>
@@ -410,8 +471,15 @@ const Contact = () => {
                         color: '#fff',
                         fontSize: '1rem',
                         outline: 'none',
+                        borderColor: formErrors.pincode ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                        boxShadow: formErrors.pincode ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                       }}
                     />
+                    {formErrors.pincode && (
+                      <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                        {formErrors.pincode}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -431,6 +499,8 @@ const Contact = () => {
                       color: '#fff',
                       fontSize: '1rem',
                       outline: 'none',
+                      borderColor: formErrors.inquiryType ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                      boxShadow: formErrors.inquiryType ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                     }}
                   >
                     <option value="" style={{ color: '#b0b0b0' }}>Select Inquiry Type</option>
@@ -440,6 +510,11 @@ const Contact = () => {
                     <option value="Operation" style={{ color: '#fff' }}>Operation & Maintenance</option>
                     <option value="SolarPanel" style={{ color: '#fff' }}>Solar Panel & Module</option>
                   </select>
+                  {formErrors.inquiryType && (
+                    <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                      {formErrors.inquiryType}
+                    </p>
+                  )}
                 </div>
 
                 <div style={{ marginBottom: '25px' }}>
@@ -459,18 +534,76 @@ const Contact = () => {
                       fontSize: '1rem',
                       outline: 'none',
                       resize: 'none',
+                      borderColor: formErrors.message ? '#ff6b6b' : 'rgba(249, 168, 37, 0.2)',
+                      boxShadow: formErrors.message ? '0 0 0 2px rgba(255, 107, 107, 0.2)' : 'none'
                     }}
                   />
+                  {formErrors.message && (
+                    <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginTop: '4px' }}>
+                      {formErrors.message}
+                    </p>
+                  )}
                 </div>
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   className="btn-primary"
-                  style={{ width: '100%', cursor: 'pointer' }}
+                  style={{
+                    width: '100%',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    background: 'linear-gradient(135deg, #f9a825 0%, #ff8f00 100%)',
+                    color: '#0a0a1a',
+                    border: 'none',
+                    padding: '16px 20px',
+                    fontSize: '1.1rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.5px',
+                    transition: 'all 0.4s ease',
+                    boxShadow: '0 8px 25px rgba(249, 168, 37, 0.4)'
+                  }}
                 >
-                  Submit Inquiry
+                  {submitted ? (
+                    <>
+                      <div style={{
+                        width: '24px',
+                        height: '24px',
+                        borderRadius: '50%',
+                        background: '#0a0a1a',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginRight: '8px'
+                      }}>
+                        ✓
+                      </div>
+                      Thank You!
+                    </>
+                  ) : (
+                    <>
+                      Send Inquiry
+                      <div style={{
+                        position: 'absolute',
+                        right: '16px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        width: '20px',
+                        height: '20px',
+                        borderRadius: '50%',
+                        background: 'rgba(0, 0, 0, 0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#0a0a1a" strokeWidth="2">
+                          <path d="M12 4v8m0 0l4-4m-4 4l4 4"></path>
+                        </svg>
+                      </div>
+                    </>
+                  )}
                 </motion.button>
               </form>
             )}

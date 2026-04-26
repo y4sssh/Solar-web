@@ -14,41 +14,72 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { name: 'About Us', href: '#about' },
-      { name: 'Leadership', href: '#team' },
-      { name: 'Our Clients', href: '#projects' },
-      { name: 'Careers', href: '#contact' },
-      { name: 'Investor Relations', href: '#' },
+      { name: 'About Us', href: '/about-us' },
+      { name: 'Leadership', href: '/leadership' },
+      { name: 'Our Clients', href: '/our-clients' },
+      { name: 'Why RTL', href: '/why-rtl' },
     ],
-    services: [
-      { name: 'Utility Solar', href: '#services' },
-      { name: 'Commercial Rooftop', href: '#services' },
-      { name: 'Residential Solar', href: '#services' },
-      { name: 'Floating Solar', href: '#services' },
-      { name: 'Energy Storage', href: '#services' },
+    ourProjects: [
+      { name: 'Our Projects', href: '/our-project' },
     ],
+    decarbonisation: {
+      energyGeneration: [
+        { name: 'Utility/ Ground mount solution', href: '/energy-generation/utility' },
+        { name: 'Floating Solar', href: '/energy-generation/floating-solar' },
+        { name: 'Rooftop', href: '/energy-generation/commercial-and-industrial-roof-top' },
+        { name: 'Asset Management', href: '/energy-generation/asset-management' },
+      ],
+      netZero: [
+        { name: 'Green hydrogen', href: '/net-zero-solutions/green-hydrogen' },
+        { name: 'Energy Storage', href: '/net-zero-solutions/energy-storage' },
+      ],
+    },
     resources: [
-      { name: 'Blogs', href: '#' },
-      { name: 'Case Studies', href: '#projects' },
-      { name: 'Download Center', href: '#' },
-      { name: 'Media', href: '#' },
-      { name: 'Events', href: '#' },
+      { name: 'Blogs', href: '/blogs' },
+      { name: 'Download Center', href: '/download-center' },
+      { name: 'Savings Calculator', href: '/savings-calculator' },
+      { name: 'Media', href: '/press-release' },
+      { name: 'Events', href: '/events' },
+      { name: 'Case Studies', href: '/case-studies' },
     ],
-    legal: [
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms & Conditions', href: '#' },
-      { name: 'Cookie Policy', href: '#' },
-      { name: 'Grievance', href: '#contact' },
+    people: [
+      { name: 'Life At Waaree', href: '/life-at-waaree' },
+      { name: 'Career', href: '/careers' },
+    ],
+    investorRelations: [
+      { name: 'Corporate Announcements', href: '/investors/corporate-announcements' },
+      { name: 'Corporate Governance', href: '/investors/corporate-governance' },
+      { name: 'Composition of Board & Committees', href: '/investors/composition-of-board-committees' },
+      { name: 'Code and Policies', href: '/investors/code-and-policies' },
+      { name: 'Subsidiary Information', href: '/investors/subsidiary-information' },
+      { name: 'Investor KYC Documents', href: '/investors/investor-kyc-documents' },
+      { name: 'Presentation & Transcript', href: '/investors/presentation-transcript' },
+      { name: 'Notice of Postal Ballot', href: '/investors/notice-of-postal-ballot' },
+      { name: 'Press Release', href: '/investors/press-release' },
+      { name: 'Agreement', href: '/investors/agreement' },
+      { name: 'Unpaid dividend-2025', href: '/investors/unpaid-dividend-2025' },
+      { name: 'Disclosure Under Regulation', href: '/investors/disclosure-under-regulation' },
+    ],
+    contact: [
+      { name: 'Enquiry', href: '/enquiry' },
+      { name: 'Grievance', href: '/grievance' },
     ],
   };
 
   const socialLinks = [
-    { icon: <LinkedInIcon />, name: 'LinkedIn', href: '#' },
-    { icon: <TwitterIcon />, name: 'Twitter', href: '#' },
-    { icon: <FacebookIcon />, name: 'Facebook', href: '#' },
-    { icon: <InstagramIcon />, name: 'Instagram', href: '#' },
-    { icon: <YouTubeIcon />, name: 'YouTube', href: '#' },
+    { icon: <LinkedInIcon />, name: 'LinkedIn', href: 'https://in.linkedin.com/company/waaree-rtl' },
+    { icon: <TwitterIcon />, name: 'Twitter', href: 'https://x.com/waaree_rtl' },
+    { icon: <FacebookIcon />, name: 'Facebook', href: 'https://www.facebook.com/waareertl/' },
+    { icon: <InstagramIcon />, name: 'Instagram', href: 'https://www.instagram.com/waaree_renewable_technologies/' },
+    { icon: <YouTubeIcon />, name: 'YouTube', href: 'https://www.youtube.com/channel/UC2q8Mxn83c5MyOv2PCbLeiw' },
   ];
+
+  const linkStyle = {
+    color: '#b0b0b0',
+    textDecoration: 'none',
+    transition: 'color 0.3s ease',
+    fontSize: '0.95rem',
+  };
 
   return (
     <footer
@@ -58,7 +89,6 @@ const Footer = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Top Wave */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -71,9 +101,7 @@ const Footer = () => {
       }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '80px' }}>
-        {/* Main Footer Content */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', gap: '50px', marginBottom: '60px' }}>
-          {/* Company Info */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px', marginBottom: '60px' }}>
           <div>
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -97,14 +125,14 @@ const Footer = () => {
               </div>
               <div>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#fff' }}>
-                  WAAREE <span style={{ color: '#f9a825' }}>SOLAR</span>
+                  WAAREE <span style={{ color: '#f9a825' }}>RTL</span>
                 </h3>
-                <p style={{ fontSize: '0.7rem', color: '#b0b0b0', letterSpacing: '2px' }}>POWERING FUTURE</p>
+                <p style={{ fontSize: '0.7rem', color: '#b0b0b0', letterSpacing: '2px' }}>RENEWABLE TECHNOLOGIES</p>
               </div>
             </motion.div>
 
             <p style={{ color: '#b0b0b0', marginBottom: '30px', lineHeight: 1.8 }}>
-              Waaree Solar is a global leader in solar PV manufacturing with operations spanning across 50+ countries. Our mission is to power the world with clean, sustainable energy.
+              Waaree Renewable Technologies Limited (WRTL), a subsidiary of Waaree Energies, delivers end-to-end renewable energy EPC solutions.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
@@ -112,95 +140,130 @@ const Footer = () => {
                 <LocationOnIcon style={{ color: '#f9a825', fontSize: '1.3rem', marginTop: '3px' }} />
                 <p style={{ color: '#b0b0b0', fontSize: '0.95rem' }}>
                   602, Western Edge - I, Off Western Express Highway,<br />
-                  Borivali (E), Mumbai, Maharashtra, India. 400066
+                  Borivali (E), Mumbai, Maharashtra, India. Pin Code: 400066
                 </p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                 <PhoneIcon style={{ color: '#f9a825', fontSize: '1.3rem' }} />
                 <a href="tel:18002121321" style={{ color: '#b0b0b0', textDecoration: 'none' }}>
-                  1800-2121-321
+                  Toll Free - 1800-2121-321
                 </a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                 <EmailIcon style={{ color: '#f9a825', fontSize: '1.3rem' }} />
-                <a href="mailto:info@waaree.com" style={{ color: '#b0b0b0', textDecoration: 'none' }}>
-                  info@waaree.com
+                <a href="mailto:info@waareertl.com" style={{ color: '#b0b0b0', textDecoration: 'none' }}>
+                  info@waareertl.com
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Company Links */}
           <div>
             <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>Company</h4>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', padding: 0, margin: 0 }}>
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    style={{
-                      color: '#b0b0b0',
-                      textDecoration: 'none',
-                      transition: 'color 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => (e.target.style.color = '#f9a825')}
-                    onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}
-                  >
+                  <a href={link.href} style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
                     {link.name}
                   </a>
                 </li>
               ))}
             </ul>
+            <div style={{ marginTop: '30px' }}>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>Our Projects</h4>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', padding: 0, margin: 0 }}>
+                {footerLinks.ourProjects.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Services Links */}
           <div>
-            <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>Services</h4>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    style={{
-                      color: '#b0b0b0',
-                      textDecoration: 'none',
-                      transition: 'color 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => (e.target.style.color = '#f9a825')}
-                    onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>Decarbonisation Solution</h4>
+            <div style={{ marginBottom: '20px' }}>
+              <h5 style={{ fontSize: '1rem', fontWeight: 500, marginBottom: '15px', color: '#f9a825' }}>Energy Generation</h5>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', padding: 0, margin: 0 }}>
+                {footerLinks.decarbonisation.energyGeneration.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h5 style={{ fontSize: '1rem', fontWeight: 500, marginBottom: '15px', color: '#f9a825' }}>Net Zero</h5>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', padding: 0, margin: 0 }}>
+                {footerLinks.decarbonisation.netZero.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Resources Links */}
           <div>
-            <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>Resources</h4>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>Resource</h4>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', padding: 0, margin: 0 }}>
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    style={{
-                      color: '#b0b0b0',
-                      textDecoration: 'none',
-                      transition: 'color 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => (e.target.style.color = '#f9a825')}
-                    onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}
-                  >
+                  <a href={link.href} style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
                     {link.name}
                   </a>
                 </li>
               ))}
             </ul>
+
+            <div style={{ marginTop: '30px' }}>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>People</h4>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', padding: 0, margin: 0 }}>
+                {footerLinks.people.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div style={{ marginTop: '30px' }}>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>Investor Relations</h4>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', padding: 0, margin: 0 }}>
+                {footerLinks.investorRelations.slice(0, 6).map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div style={{ marginTop: '30px' }}>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '25px', color: '#fff' }}>Contact</h4>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', padding: 0, margin: 0 }}>
+                {footerLinks.contact.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Social Links */}
         <div style={{
           padding: '30px 0',
           borderTop: '1px solid rgba(249, 168, 37, 0.2)',
@@ -212,12 +275,14 @@ const Footer = () => {
           gap: '20px',
         }}>
           <div>
-            <h4 style={{ fontWeight: 600, marginBottom: '15px' }}>Follow us on</h4>
+            <h4 style={{ fontWeight: 600, marginBottom: '15px', color: '#fff' }}>Follow us on</h4>
             <div style={{ display: 'flex', gap: '15px' }}>
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, background: '#f9a825' }}
                   style={{
                     width: '45px',
@@ -240,26 +305,15 @@ const Footer = () => {
           </div>
 
           <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-            {footerLinks.legal.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                style={{
-                  color: '#b0b0b0',
-                  textDecoration: 'none',
-                  fontSize: '0.9rem',
-                  transition: 'color 0.3s ease',
-                }}
-                onMouseEnter={(e) => (e.target.style.color = '#f9a825')}
-                onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}
-              >
-                {link.name}
-              </a>
-            ))}
+            <a href="/terms-and-conditions" style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
+              Terms & Conditions
+            </a>
+            <a href="/privacy-policy" style={linkStyle} onMouseEnter={(e) => (e.target.style.color = '#f9a825')} onMouseLeave={(e) => (e.target.style.color = '#b0b0b0')}>
+              Privacy Policy
+            </a>
           </div>
         </div>
 
-        {/* Copyright */}
         <div style={{
           padding: '30px 0',
           display: 'flex',
@@ -269,7 +323,7 @@ const Footer = () => {
           gap: '20px',
         }}>
           <p style={{ color: '#b0b0b0', fontSize: '0.9rem' }}>
-            © {currentYear} Waaree Solar. All Rights Reserved.
+            © {currentYear} Waaree Renewable Technologies Limited. All Rights Reserved.
           </p>
           <p style={{ color: '#b0b0b0', fontSize: '0.9rem' }}>
             CIN: L93000MH1999PLC120470
@@ -277,7 +331,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
       <motion.button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         whileHover={{ scale: 1.1 }}
